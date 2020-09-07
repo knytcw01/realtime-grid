@@ -31,16 +31,16 @@ class App extends Component {
     });
     const token = await response.json();
       hamoni = new Hamoni(token);
-    
       hamoni
+        .connect()
+        .then(() => {
+          
+          hamoni
           .createList("datagrid", [
             { firstName: "James", lastName: "Darwin" },
             { firstName: "Jimmy", lastName: "August" }
           ])
-
-      hamoni
-        .connect()
-        .then(() => {
+        
           hamoni
             .get("datagrid")
             .then(listPrimitive => {
